@@ -11,6 +11,7 @@ using std::cerr;
 using std::clog;
 using std::left;
 
+#include "color tables.h"
 #include "global.h"
 #include "handlers.h"
 #include "shader loader.h"
@@ -32,12 +33,17 @@ int main(int argc, char **argv)
 	glWindowPos2i(0,0);
 	glDisable(GL_MULTISAMPLE);
 
+	// color table initialization
+	populate_color_tables();
+
 	// shader initialization
 	g.program = load_shaders();
 	g.s_index = glGetUniformLocation(g.program,"s");
 	g.b_index = glGetUniformLocation(g.program,"b");
+	g.color_table_index = glGetUniformLocation(g.program,"color_table");
 	glUniform1f(g.s_index,g.s);
 	glUniform2fv(g.b_index,1,g.b);
+	glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)spectrum_color_table);
 
 	// event handling initialization
 	glutDisplayFunc(display);

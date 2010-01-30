@@ -22,6 +22,7 @@ struct Global
 	GLint s_index;
 	float b[2];
 	GLint b_index;
+	GLint color_table_index;
 
 	GLuint program;
 
@@ -32,7 +33,7 @@ struct Global
 	{
 		window_width = 800;
 		window_height = 800;
-		fractal_center_x = 0;
+		fractal_center_x = -0.6;
 		fractal_center_y = 0;
 		mouse_z = 9592;	// ln(0.004)/(ln(10)/4000)
 

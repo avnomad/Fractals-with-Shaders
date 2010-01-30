@@ -224,6 +224,14 @@
 				RelativePath="..\..\..\Unsorted\direct input\Mouse Wrapper.h"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\Unsorted\Color\wavelength to RGB.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Unsorted\Color\wavelength to RGB.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

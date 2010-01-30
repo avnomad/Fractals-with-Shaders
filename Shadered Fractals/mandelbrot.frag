@@ -1,9 +1,9 @@
+#define MAXITER 255
+#define THRESHOLD 25.0
+
 uniform float s;
 uniform vec2 b;
-
-#define MAXITER 255
-#define THRESHOLD 25
-
+uniform vec3 color_table[MAXITER+1];
 
 void main()
 {
@@ -17,9 +17,7 @@ void main()
 		if (dot(z,z)>THRESHOLD)
 			break;
 	}
-	float factor = float(i)/MAXITER;
-
-	gl_FragColor = vec4(factor,factor,0.5,1.0);
+	gl_FragColor = vec4(color_table[i],1.0);
 	
 	if(length(c)<0.005) gl_FragColor = gl_Color;
 }
