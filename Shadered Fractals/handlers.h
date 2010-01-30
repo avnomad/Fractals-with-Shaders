@@ -2,7 +2,7 @@ void display()
 {
 	//glClear(GL_COLOR_BUFFER_BIT);
 
-	glColor3f(0,0,1);
+	glColor3f(1,0,0);
 	glRecti(-1,-1,1,1);
 
 	glutSwapBuffers();
@@ -55,9 +55,9 @@ void idle()
 	if(g.mouse.button[1])
 	{
 		if(g.mouse.X != 0)
-			g.zulia[0] -= 0.2*g.s*g.mouse.X;
+			g.zulia[0] += 0.2*g.s*g.mouse.X;
 		if(g.mouse.Y != 0)
-			g.zulia[1] += 0.2*g.s*g.mouse.Y;
+			g.zulia[1] -= 0.2*g.s*g.mouse.Y;
 		glUniform2fv(g.zulia_index,1,g.zulia);
 		if(!change) glutPostRedisplay();
 	} // end if

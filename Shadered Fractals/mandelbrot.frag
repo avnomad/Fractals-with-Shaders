@@ -32,5 +32,15 @@ void main()
 	} // end for
 	gl_FragColor = vec4(color_table[i],1.0);
 	
-	//if(length(c)<0.005) gl_FragColor = gl_Color;
+
+	if(mandelbrot == 0)
+	{
+		z = s*gl_FragCoord.xy + b;
+		if(length(z)< 0.005)
+			gl_FragColor = gl_Color;
+		if(length(z-zulia) < 0.005)
+			gl_FragColor = 1.0-gl_Color;
+		else if(length(z-zulia) < 0.010)
+			gl_FragColor = gl_Color;
+	} // end else
 }
