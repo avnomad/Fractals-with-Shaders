@@ -163,11 +163,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\Unsorted\direct input\Device Wrapper.cpp"
+				RelativePath=".\color tables.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\main.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\shader loader.cpp"
 				>
 			</File>
 		</Filter>
@@ -177,7 +181,39 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\color tables.h"
+				>
+			</File>
+			<File
+				RelativePath=".\global.h"
+				>
+			</File>
+			<File
+				RelativePath=".\handlers.h"
+				>
+			</File>
+			<File
+				RelativePath=".\shader loader.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Shaders"
+			>
+			<File
+				RelativePath=".\mandelbrot.frag"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Shared"
+			>
+			<File
 				RelativePath="..\..\..\Unsorted\char reader.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Unsorted\direct input\Device Wrapper.cpp"
 				>
 			</File>
 			<File
@@ -186,20 +222,6 @@
 			</File>
 			<File
 				RelativePath="..\..\..\Unsorted\direct input\Mouse Wrapper.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
-			>
-		</Filter>
-		<Filter
-			Name="Shaders"
-			>
-			<File
-				RelativePath=".\mandelbrot.frag"
 				>
 			</File>
 		</Filter>

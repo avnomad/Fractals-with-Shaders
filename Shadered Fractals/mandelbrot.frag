@@ -21,5 +21,5 @@ void main()
 
 	gl_FragColor = vec4(factor,factor,0.5,1.0);
 	
-	if(length(c)<0.005) gl_FragColor = vec4(1,0,0,1);
+	if(length(c)<0.005) gl_FragColor = gl_Color;
 }
