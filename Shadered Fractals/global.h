@@ -23,6 +23,10 @@ struct Global
 	float b[2];
 	GLint b_index;
 	GLint color_table_index;
+	int mandelbrot;
+	GLint mandelbrot_index;
+	float zulia[2];
+	GLint zulia_index;
 
 	GLuint program;
 
@@ -36,6 +40,9 @@ struct Global
 		fractal_center_x = -0.6;
 		fractal_center_y = 0;
 		mouse_z = 9592;	// ln(0.004)/(ln(10)/4000)
+		mandelbrot = 0;
+		zulia[0] = 0.0f;
+		zulia[1] = 0.0f;
 
 		s = exp(wheel_factor*mouse_z);	// 0.004
 		b[0] = fractal_center_x - 0.5f*s*window_width;

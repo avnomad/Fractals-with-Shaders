@@ -51,6 +51,14 @@ void idle()
 
 		glutPostRedisplay();
 	} // end if
+
+	if(g.mouse.button[1])
+	{
+		g.zulia[0] = g.s*g.mouse.absolute.x + g.b[0];
+		g.zulia[1] = g.s*(g.window_height-1-g.mouse.absolute.y) + g.b[1];
+		glUniform2fv(g.zulia_index,1,g.zulia);
+		if(!change) glutPostRedisplay();
+	} // end if
 } // end function active_motion
 
 
@@ -71,6 +79,14 @@ void keyboard(unsigned char key, int x, int y)
 		break;
 	case '4':
 		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)yellow_on_blue_color_table);
+		break;
+	case 'm':
+		g.mandelbrot = 1;
+		glUniform1i(g.mandelbrot_index,g.mandelbrot);
+		break;
+	case 'z':
+		g.mandelbrot = 0;
+		glUniform1i(g.mandelbrot_index,g.mandelbrot);
 		break;
 	} // end switch
 	glutPostRedisplay();
