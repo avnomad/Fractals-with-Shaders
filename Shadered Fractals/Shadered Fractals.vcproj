@@ -57,7 +57,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glew32.lib"
+				AdditionalDependencies="glew32.lib dxguid.lib dinput8.lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -163,6 +163,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath="..\..\..\Unsorted\direct input\Device Wrapper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -174,6 +178,14 @@
 			>
 			<File
 				RelativePath="..\..\..\Unsorted\char reader.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Unsorted\direct input\DirectInput Wrapper.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\Unsorted\direct input\Mouse Wrapper.h"
 				>
 			</File>
 		</Filter>
