@@ -54,8 +54,10 @@ void idle()
 
 	if(g.mouse.button[1])
 	{
-		g.zulia[0] = g.s*g.mouse.absolute.x + g.b[0];
-		g.zulia[1] = g.s*(g.window_height-1-g.mouse.absolute.y) + g.b[1];
+		if(g.mouse.X != 0)
+			g.zulia[0] -= 0.2*g.s*g.mouse.X;
+		if(g.mouse.Y != 0)
+			g.zulia[1] += 0.2*g.s*g.mouse.Y;
 		glUniform2fv(g.zulia_index,1,g.zulia);
 		if(!change) glutPostRedisplay();
 	} // end if
