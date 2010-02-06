@@ -1,6 +1,7 @@
 #include <Direct Input/DirectInput Wrapper.h>
 #include <Direct Input/Mouse Wrapper.h>
 
+#include <cstdio>
 #include <cstdlib>
 #include <fstream>
 using std::ifstream;
@@ -88,24 +89,41 @@ struct Global
 			return;
 		} // end if
 
-		ofstream out(settings_file_name);	// for some reason the program exits prematurely in here...
+		//ofstream out(settings_file_name);
 
-		if(!out)
-		{
-			cerr << "failed to save settings." << endl;
-			return;
-		} // end if
+		//if(!out)
+		//{
+		//	cerr << "failed to save settings." << endl;
+		//	return;
+		//} // end if
 
-		out << fractal_center_x << '\n';
-		out << fractal_center_y << '\n';
-		out << mouse_z << '\n';
-		out << mandelbrot << '\n';
-		out << active_color_table << '\n';
-		out << zulia[0] << '\n';
-		out << zulia[1] << '\n';
-		out << file_number << '\n';
+		//out << fractal_center_x << '\n';
+		//out << fractal_center_y << '\n';
+		//out << mouse_z << '\n';
+		//out << mandelbrot << '\n';
+		//out << active_color_table << '\n';
+		//out << zulia[0] << '\n';
+		//out << zulia[1] << '\n';
+		//out << file_number << '\n';
 
-		out.close();
+		//out.close();
+
+		/* 
+			it appears that when the 'x' button is pressed on a window, glut deletes a critical section
+			required by the ofstream constructor before ~Global destructor is called. Thus when an attempt is
+			made to construct the 'out' object, function EnterCriticalSection is called on a deleted critical
+			section. That would normally result in an exception, but not in a destructor. In that way the
+			program closes silently, but the settings are not saved.
+			The good news are that stdio calls to fopen and fprintf seem to work, so this is an acceptable
+			workarround for now.
+	   */
+
+		FILE *out;
+		out = fopen(settings_file_name,"w");
+		fprintf(out,"%f\n%f\n%d\n%d\n%u\n%f\n%f\n%u\n",fractal_center_x,fractal_center_y,
+			mouse_z,mandelbrot,active_color_table,zulia[0],zulia[1],file_number);
+
+		fclose(out);
 	} // end Global destructor
 
 } g; // end struct Global
