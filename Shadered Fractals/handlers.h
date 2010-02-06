@@ -71,16 +71,11 @@ void keyboard(unsigned char key, int x, int y)
 	case 27:	// escape key
 		exit(0);
 	case '1':
-		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)lab_color_table);
-		break;
 	case '2':
-		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)spectrum_color_table);
-		break;
 	case '3':
-		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)reverse_spectrum_color_table);
-		break;
 	case '4':
-		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)yellow_on_blue_color_table);
+		g.active_color_table = key-'1';
+		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)color_table[g.active_color_table]);
 		break;
 	case 'm':
 		g.mandelbrot = 1;

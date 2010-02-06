@@ -2,106 +2,106 @@
 
 #include <Color/wavelength to RGB.h>
 
+#define LAB 0
+#define SPECTRUM 1
+#define REVERSE_SPECTRUM 2
+#define YELLOW_ON_BLUE 3
 
 void populate_color_tables()
 {
 	for(int i = 0 ; i < TABLE_ENTRIES-1 ; ++i)
 	{
 		float temp = (float)i / TABLE_ENTRIES;
-		yellow_on_blue_color_table[i].r = temp;
-		yellow_on_blue_color_table[i].g = temp;
-		yellow_on_blue_color_table[i].b = 0.5;
+		color_table[YELLOW_ON_BLUE][i].r = temp;
+		color_table[YELLOW_ON_BLUE][i].g = temp;
+		color_table[YELLOW_ON_BLUE][i].b = 0.5;
 
 		temp = (640-380)*(temp) + 380;	// wavelength
-		reverse_spectrum_color_table[TABLE_ENTRIES-2-i].r = spectrum_color_table[i].r = spectrumRed(temp);
-		reverse_spectrum_color_table[TABLE_ENTRIES-2-i].g = spectrum_color_table[i].g = spectrumGreen(temp);
-		reverse_spectrum_color_table[TABLE_ENTRIES-2-i].b = spectrum_color_table[i].b = spectrumBlue(temp);
+		color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-2-i].r = color_table[SPECTRUM][i].r = spectrumRed(temp);
+		color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-2-i].g = color_table[SPECTRUM][i].g = spectrumGreen(temp);
+		color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-2-i].b = color_table[SPECTRUM][i].b = spectrumBlue(temp);
 	} // end for
 
-	yellow_on_blue_color_table[TABLE_ENTRIES-1].r = 0.0;
-	yellow_on_blue_color_table[TABLE_ENTRIES-1].g = 0.0;
-	yellow_on_blue_color_table[TABLE_ENTRIES-1].b = 0.0;
+	color_table[YELLOW_ON_BLUE][TABLE_ENTRIES-1].r = 0.0;
+	color_table[YELLOW_ON_BLUE][TABLE_ENTRIES-1].g = 0.0;
+	color_table[YELLOW_ON_BLUE][TABLE_ENTRIES-1].b = 0.0;
 
-	spectrum_color_table[TABLE_ENTRIES-1].r = 0.0;
-	spectrum_color_table[TABLE_ENTRIES-1].g = 0.0;
-	spectrum_color_table[TABLE_ENTRIES-1].b = 0.0;
+	color_table[SPECTRUM][TABLE_ENTRIES-1].r = 0.0;
+	color_table[SPECTRUM][TABLE_ENTRIES-1].g = 0.0;
+	color_table[SPECTRUM][TABLE_ENTRIES-1].b = 0.0;
 
-	reverse_spectrum_color_table[TABLE_ENTRIES-1].r = 0.0;
-	reverse_spectrum_color_table[TABLE_ENTRIES-1].g = 0.0;
-	reverse_spectrum_color_table[TABLE_ENTRIES-1].b = 0.0;
+	color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-1].r = 0.0;
+	color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-1].g = 0.0;
+	color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-1].b = 0.0;
 } // end function populate_color_tables
 
 
-RGBColor yellow_on_blue_color_table[TABLE_ENTRIES];
-RGBColor spectrum_color_table[TABLE_ENTRIES];
-RGBColor reverse_spectrum_color_table[TABLE_ENTRIES];
-
-RGBColor lab_color_table[TABLE_ENTRIES] = {
-	{0.000f,0.000,0.734},
-	{0.000f,0.300,0.734},
-	{0.000f,0.734,0.000},
-	{0.734f,0.734,0.000},
-	{0.734f,0.000,0.000},
-	{0.734f,0.000,0.734},
-	{0.000f,0.734,0.734},
-	{0.750f,0.750,0.750},
-	{0.750f,0.859,0.750},
-	{0.641f,0.781,0.938},
-	{0.500f,0.000,0.000},
-	{0.000f,0.500,0.000},
-	{0.500f,0.500,0.000},
-	{0.000f,0.000,0.500},
-	{0.500f,0.000,0.500},
-	{0.000f,0.500,0.500},
-	{0.234f,0.359,0.234},
-	{0.359f,0.359,0.234},
-	{0.484f,0.359,0.234},
-	{0.609f,0.359,0.234},
-	{0.734f,0.359,0.234},
-	{0.859f,0.359,0.234},
-	{0.984f,0.359,0.234},
-	{0.234f,0.484,0.234},
-	{0.359f,0.484,0.234},
-	{0.484f,0.484,0.234},
-	{0.609f,0.484,0.234},
-	{0.734f,0.484,0.234},
-	{0.859f,0.484,0.234},
-	{0.984f,0.484,0.234},
-	{0.234f,0.609,0.234},
-	{0.359f,0.609,0.234},
-	{0.484f,0.609,0.234},
-	{0.609f,0.609,0.234},
-	{0.734f,0.609,0.234},
-	{0.859f,0.609,0.234},
-	{0.984f,0.609,0.234},
-	{0.234f,0.734,0.234},
-	{0.359f,0.734,0.234},
-	{0.484f,0.734,0.234},
-	{0.609f,0.734,0.234},
-	{0.734f,0.734,0.234},
-	{0.859f,0.734,0.234},
-	{0.984f,0.734,0.234},
-	{0.234f,0.859,0.234},
-	{0.359f,0.859,0.234},
-	{0.484f,0.859,0.234},
-	{0.609f,0.859,0.234},
-	{0.734f,0.859,0.234},
-	{0.859f,0.859,0.234},
-	{0.984f,0.859,0.234},
-	{0.234f,0.984,0.234},
-	{0.359f,0.984,0.234},
-	{0.484f,0.984,0.234},
-	{0.609f,0.984,0.234},
-	{0.734f,0.984,0.234},
-	{0.859f,0.984,0.234},
-	{0.984f,0.984,0.234},
-	{0.234f,0.234,0.359},
-	{0.359f,0.234,0.359},
-	{0.484f,0.234,0.359},
-	{0.609f,0.234,0.359},
-	{0.734f,0.234,0.359},
-	{0.859f,0.234,0.359},
-	{0.984f,0.234,0.359},
+RGBColor color_table[COLOR_TABLES][TABLE_ENTRIES] = {{
+	{0.000f,0.000f,0.734},
+	{0.000f,0.300f,0.734},
+	{0.000f,0.734f,0.000},
+	{0.734f,0.734f,0.000},
+	{0.734f,0.000f,0.000},
+	{0.734f,0.000f,0.734},
+	{0.000f,0.734f,0.734},
+	{0.750f,0.750f,0.750},
+	{0.750f,0.859f,0.750},
+	{0.641f,0.781f,0.938},
+	{0.500f,0.000f,0.000},
+	{0.000f,0.500f,0.000},
+	{0.500f,0.500f,0.000},
+	{0.000f,0.000f,0.500},
+	{0.500f,0.000f,0.500},
+	{0.000f,0.500f,0.500},
+	{0.234f,0.359f,0.234},
+	{0.359f,0.359f,0.234},
+	{0.484f,0.359f,0.234},
+	{0.609f,0.359f,0.234},
+	{0.734f,0.359f,0.234},
+	{0.859f,0.359f,0.234},
+	{0.984f,0.359f,0.234},
+	{0.234f,0.484f,0.234},
+	{0.359f,0.484f,0.234},
+	{0.484f,0.484f,0.234},
+	{0.609f,0.484f,0.234},
+	{0.734f,0.484f,0.234},
+	{0.859f,0.484f,0.234},
+	{0.984f,0.484f,0.234},
+	{0.234f,0.609f,0.234},
+	{0.359f,0.609f,0.234},
+	{0.484f,0.609f,0.234},
+	{0.609f,0.609f,0.234},
+	{0.734f,0.609f,0.234},
+	{0.859f,0.609f,0.234},
+	{0.984f,0.609f,0.234},
+	{0.234f,0.734f,0.234},
+	{0.359f,0.734f,0.234},
+	{0.484f,0.734f,0.234},
+	{0.609f,0.734f,0.234},
+	{0.734f,0.734f,0.234},
+	{0.859f,0.734f,0.234},
+	{0.984f,0.734f,0.234},
+	{0.234f,0.859f,0.234},
+	{0.359f,0.859f,0.234},
+	{0.484f,0.859f,0.234},
+	{0.609f,0.859f,0.234},
+	{0.734f,0.859f,0.234},
+	{0.859f,0.859f,0.234},
+	{0.984f,0.859f,0.234},
+	{0.234f,0.984f,0.234},
+	{0.359f,0.984f,0.234},
+	{0.484f,0.984f,0.234},
+	{0.609f,0.984f,0.234},
+	{0.734f,0.984f,0.234},
+	{0.859f,0.984f,0.234},
+	{0.984f,0.984f,0.234},
+	{0.234f,0.234f,0.359},
+	{0.359f,0.234f,0.359},
+	{0.484f,0.234f,0.359},
+	{0.609f,0.234f,0.359},
+	{0.734f,0.234f,0.359},
+	{0.859f,0.234f,0.359},
+	{0.984f,0.234f,0.359},
 	{0.234f,0.359,0.359},
 	{0.359f,0.359,0.359},
 	{0.484f,0.359,0.359},
@@ -293,4 +293,4 @@ RGBColor lab_color_table[TABLE_ENTRIES] = {
 	{0.984f,0.000,0.984},
 	{0.000f,0.984,0.984},
 	{0.000f,0.000,0.000}
-};
+}};

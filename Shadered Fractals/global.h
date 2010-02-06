@@ -13,7 +13,7 @@ struct Global
 	static const char *const window_title;
 
 	int mouse_z;
-	static const float wheel_factor;	// ln(10)/10
+	static const float wheel_factor;	// ln(10)/4000
 	float fractal_center_x;
 	float fractal_center_y;
 
@@ -30,17 +30,20 @@ struct Global
 
 	GLuint program;
 
+	unsigned int active_color_table;
+
 	// methods
 	Global()
 		:directInput(GetModuleHandle(NULL)),
 		mouse(directInput)
 	{
+		active_color_table = 0;
 		window_width = 800;
 		window_height = 800;
 		fractal_center_x = -0.6;
 		fractal_center_y = 0;
 		mouse_z = 9592;	// ln(0.004)/(ln(10)/4000)
-		mandelbrot = 0;
+		mandelbrot = 1;
 		zulia[0] = 0.0f;
 		zulia[1] = 0.0f;
 

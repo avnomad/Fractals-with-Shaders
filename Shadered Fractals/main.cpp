@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	g.zulia_index = glGetUniformLocation(g.program,"zulia");
 	glUniform1f(g.s_index,g.s);
 	glUniform2fv(g.b_index,1,g.b);
-	glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)spectrum_color_table);
+	glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)color_table[g.active_color_table]);
 	glUniform1i(g.mandelbrot_index,g.mandelbrot);
 	glUniform2fv(g.zulia_index,1,g.zulia);
 

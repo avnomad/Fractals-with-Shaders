@@ -2,6 +2,7 @@
 #define COLOR_TABLES_H
 
 #define TABLE_ENTRIES 256
+#define COLOR_TABLES 4
 
 struct RGBColor
 {
@@ -10,10 +11,7 @@ struct RGBColor
 	float b;
 }; // end struct RGBColor
 
-extern RGBColor yellow_on_blue_color_table[TABLE_ENTRIES];
-extern RGBColor spectrum_color_table[TABLE_ENTRIES];
-extern RGBColor reverse_spectrum_color_table[TABLE_ENTRIES];
-extern RGBColor lab_color_table[TABLE_ENTRIES];
+extern RGBColor color_table[COLOR_TABLES][TABLE_ENTRIES];
 
 void populate_color_tables();
 
