@@ -90,6 +90,24 @@ void keyboard(unsigned char key, int x, int y)
 	case 127:	// delete key
 		g.delete_settings = true;
 		break;
+	case '\r':	// enter key
+		ofstream out("c:/image.ppm",std::ios_base::out|std::ios_base::binary);
+		if(!out)
+		{
+			cerr << "unable to save image." << endl;
+			break;
+		} // end if
+		out << "P6\n" << g.window_width << ' ' << g.window_height << "\n255 ";	// ppm header
+		char *image = new char[3*g.window_width*g.window_height];
+		glReadPixels(0,0,g.window_width,g.window_height,GL_RGB,GL_UNSIGNED_BYTE,image);	// bring get data from the color buffer
+
+		for(int c = 3*g.window_width*(g.window_height-1) ; c >= 0 ; c -= 3*g.window_width)
+			out.write(image+c,3*g.window_width);
+
+		delete[] image;
+		out.close();
+		cout << '\a';	// alert the user that save is complete
+		break;
 	} // end switch
 	glutPostRedisplay();
 } // end function keyboard

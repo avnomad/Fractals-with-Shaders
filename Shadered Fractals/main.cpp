@@ -22,15 +22,15 @@ int main(int argc, char **argv)
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE /*| GLUT_MULTISAMPLE*/);
 	glutInitWindowSize(g.window_width,g.window_height);
-	glutInitWindowPosition(800,100);
+	glutInitWindowPosition(450,130);
 	glutCreateWindow(g.window_title);
 
 	// glew initialization
 	glewInit();
 
 	// OpenGL initialization
-	glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-	glWindowPos2i(0,0);
+	glPixelStorei(GL_PACK_ALIGNMENT,1);
+	glReadBuffer(GL_FRONT);
 	glDisable(GL_MULTISAMPLE);
 
 	// color table initialization
