@@ -2,7 +2,7 @@
 #define COLOR_TABLES_H
 
 #define TABLE_ENTRIES 256
-#define COLOR_TABLES 4
+#define COLOR_TABLES 6
 
 struct RGBColor
 {

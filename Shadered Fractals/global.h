@@ -40,7 +40,7 @@ struct Global
 		active_color_table = 0;
 		window_width = 800;
 		window_height = 800;
-		fractal_center_x = -0.6;
+		fractal_center_x = -0.6f;
 		fractal_center_y = 0;
 		mouse_z = 9592;	// ln(0.004)/(ln(10)/4000)
 		mandelbrot = 1;

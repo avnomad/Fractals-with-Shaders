@@ -74,6 +74,8 @@ void keyboard(unsigned char key, int x, int y)
 	case '2':
 	case '3':
 	case '4':
+	case '5':
+	case '6':
 		g.active_color_table = key-'1';
 		glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)color_table[g.active_color_table]);
 		break;

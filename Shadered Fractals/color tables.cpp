@@ -1,25 +1,41 @@
 #include "color tables.h"
 
+#include <cmath>
 #include <Color/wavelength to RGB.h>
+
+#define e 2.71828f
 
 #define LAB 0
 #define SPECTRUM 1
 #define REVERSE_SPECTRUM 2
 #define YELLOW_ON_BLUE 3
+#define LOGARITHMIC_SPECTRUM 4
+#define REVERSE_LOGARITHMIC_SPECTRUM 5
+
 
 void populate_color_tables()
 {
 	for(int i = 0 ; i < TABLE_ENTRIES-1 ; ++i)
 	{
-		float temp = (float)i / TABLE_ENTRIES;
-		color_table[YELLOW_ON_BLUE][i].r = temp;
-		color_table[YELLOW_ON_BLUE][i].g = temp;
+		float factor = (float)i / TABLE_ENTRIES;
+		color_table[YELLOW_ON_BLUE][i].r = factor;
+		color_table[YELLOW_ON_BLUE][i].g = factor;
 		color_table[YELLOW_ON_BLUE][i].b = 0.5;
 
-		temp = (640-380)*(temp) + 380;	// wavelength
+		float temp = (640-380)*(factor) + 380;	// wavelength
 		color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-2-i].r = color_table[SPECTRUM][i].r = spectrumRed(temp);
 		color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-2-i].g = color_table[SPECTRUM][i].g = spectrumGreen(temp);
 		color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-2-i].b = color_table[SPECTRUM][i].b = spectrumBlue(temp);
+
+		temp = (640-380)*log((e-1)*factor+1) + 380;	// wavelength
+		color_table[LOGARITHMIC_SPECTRUM][i].r = spectrumRed(temp);
+		color_table[LOGARITHMIC_SPECTRUM][i].g = spectrumGreen(temp);
+		color_table[LOGARITHMIC_SPECTRUM][i].b = spectrumBlue(temp);
+
+		temp = (380-640)*log((e-1)*factor+1) + 640;	// wavelength
+		color_table[REVERSE_LOGARITHMIC_SPECTRUM][i].r = spectrumRed(temp);
+		color_table[REVERSE_LOGARITHMIC_SPECTRUM][i].g = spectrumGreen(temp);
+		color_table[REVERSE_LOGARITHMIC_SPECTRUM][i].b = spectrumBlue(temp);
 	} // end for
 
 	color_table[YELLOW_ON_BLUE][TABLE_ENTRIES-1].r = 0.0;
@@ -33,6 +49,14 @@ void populate_color_tables()
 	color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-1].r = 0.0;
 	color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-1].g = 0.0;
 	color_table[REVERSE_SPECTRUM][TABLE_ENTRIES-1].b = 0.0;
+
+	color_table[LOGARITHMIC_SPECTRUM][TABLE_ENTRIES-1].r = 0.0;
+	color_table[LOGARITHMIC_SPECTRUM][TABLE_ENTRIES-1].g = 0.0;
+	color_table[LOGARITHMIC_SPECTRUM][TABLE_ENTRIES-1].b = 0.0;
+
+	color_table[REVERSE_LOGARITHMIC_SPECTRUM][TABLE_ENTRIES-1].r = 0.0;
+	color_table[REVERSE_LOGARITHMIC_SPECTRUM][TABLE_ENTRIES-1].g = 0.0;
+	color_table[REVERSE_LOGARITHMIC_SPECTRUM][TABLE_ENTRIES-1].b = 0.0;
 } // end function populate_color_tables
 
 
