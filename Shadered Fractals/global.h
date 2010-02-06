@@ -36,6 +36,7 @@ struct Global
 	GLuint program;
 
 	unsigned int active_color_table;
+	unsigned int file_number;
 	bool delete_settings;
 	static const char *const settings_file_name;
 
@@ -55,6 +56,7 @@ struct Global
 			in >> active_color_table;
 			in >> zulia[0];
 			in >> zulia[1];
+			in >> file_number;
 
 			in.close();
 		}
@@ -67,6 +69,7 @@ struct Global
 			active_color_table = 0;
 			zulia[0] = 0.0f;
 			zulia[1] = 0.0f;
+			file_number = 0;
 		} // end else
 		window_width = 800;
 		window_height = 800;
@@ -85,7 +88,7 @@ struct Global
 			return;
 		} // end if
 
-		ofstream out(settings_file_name);
+		ofstream out(settings_file_name);	// for some reason the program exits prematurely in here...
 
 		if(!out)
 		{
@@ -100,6 +103,7 @@ struct Global
 		out << active_color_table << '\n';
 		out << zulia[0] << '\n';
 		out << zulia[1] << '\n';
+		out << file_number << '\n';
 
 		out.close();
 	} // end Global destructor

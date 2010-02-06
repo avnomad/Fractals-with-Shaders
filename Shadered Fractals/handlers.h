@@ -1,3 +1,7 @@
+#include <sstream>
+using std::ostringstream;
+
+
 void display()
 {
 	//glClear(GL_COLOR_BUFFER_BIT);
@@ -91,7 +95,9 @@ void keyboard(unsigned char key, int x, int y)
 		g.delete_settings = true;
 		break;
 	case '\r':	// enter key
-		ofstream out("c:/image.ppm",std::ios_base::out|std::ios_base::binary);
+		ostringstream file_name;
+		file_name << "c:/image_" << g.file_number++ << ".ppm";
+		ofstream out(file_name.str().c_str(),std::ios_base::out|std::ios_base::binary);
 		if(!out)
 		{
 			cerr << "unable to save image." << endl;
