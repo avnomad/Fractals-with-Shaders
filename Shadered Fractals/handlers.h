@@ -87,6 +87,9 @@ void keyboard(unsigned char key, int x, int y)
 		g.mandelbrot = 0;
 		glUniform1i(g.mandelbrot_index,g.mandelbrot);
 		break;
+	case 127:	// delete key
+		g.delete_settings = true;
+		break;
 	} // end switch
 	glutPostRedisplay();
 } // end function keyboard
