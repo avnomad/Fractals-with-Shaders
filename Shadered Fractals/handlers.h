@@ -22,7 +22,7 @@ void idle()
 	{
 		g.mouse_z += g.mouse.Z;
 		g.s = exp(g.wheel_factor*g.mouse_z);
-		glUniform1f(g.s_index,g.s);
+		glUniform1d(g.s_index,g.s);
 
 		change = true;
 	} // end if
@@ -44,9 +44,9 @@ void idle()
 
 	if(change)
 	{
-		g.b[0] = g.fractal_center_x - 0.5f*g.s*g.window_width;
-		g.b[1] = g.fractal_center_y - 0.5f*g.s*g.window_height;
-		glUniform2fv(g.b_index,1,g.b);
+		g.b[0] = g.fractal_center_x - 0.5*g.s*g.window_width;
+		g.b[1] = g.fractal_center_y - 0.5*g.s*g.window_height;
+		glUniform2dv(g.b_index,1,g.b);
 
 		/*system("CLS");
 		cout << "fractal center x:\t" << g.fractal_center_x << '\n';
@@ -62,7 +62,7 @@ void idle()
 			g.zulia[0] += 0.2*g.s*g.mouse.X;
 		if(g.mouse.Y != 0)
 			g.zulia[1] -= 0.2*g.s*g.mouse.Y;
-		glUniform2fv(g.zulia_index,1,g.zulia);
+		glUniform2dv(g.zulia_index,1,g.zulia);
 		if(!change) glutPostRedisplay();
 	} // end if
 } // end function active_motion
@@ -124,9 +124,9 @@ void reshape(int w, int h)
 	g.window_width = w;
 	g.window_height = h;
 
-	g.b[0] = g.fractal_center_x - 0.5f*g.s*g.window_width;
-	g.b[1] = g.fractal_center_y - 0.5f*g.s*g.window_height;
-	glUniform2fv(g.b_index,1,g.b);
+	g.b[0] = g.fractal_center_x - 0.5*g.s*g.window_width;
+	g.b[1] = g.fractal_center_y - 0.5*g.s*g.window_height;
+	glUniform2dv(g.b_index,1,g.b);
 
 	glViewport(0,0,(GLsizei)w,(GLsizei)h);
 } // end function reshape

@@ -43,11 +43,11 @@ int main(int argc, char **argv)
 	g.color_table_index = glGetUniformLocation(g.program,"color_table");
 	g.mandelbrot_index = glGetUniformLocation(g.program,"mandelbrot");
 	g.zulia_index = glGetUniformLocation(g.program,"zulia");
-	glUniform1f(g.s_index,g.s);
-	glUniform2fv(g.b_index,1,g.b);
+	glUniform1d(g.s_index,g.s);
+	glUniform2dv(g.b_index,1,g.b);
 	glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)color_table[g.active_color_table]);
 	glUniform1i(g.mandelbrot_index,g.mandelbrot);
-	glUniform2fv(g.zulia_index,1,g.zulia);
+	glUniform2dv(g.zulia_index,1,g.zulia);
 
 	// event handling initialization
 	glutDisplayFunc(display);

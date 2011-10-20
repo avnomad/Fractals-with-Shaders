@@ -19,19 +19,19 @@ struct Global
 	static const char *const window_title;
 
 	int mouse_z;
-	static const float wheel_factor;	// ln(10)/4000
-	float fractal_center_x;
-	float fractal_center_y;
+	static const double wheel_factor;	// ln(10)/4000
+	double fractal_center_x;
+	double fractal_center_y;
 
 	// uniforms
-	float s;
+	double s;
 	GLint s_index;
-	float b[2];
+	double b[2];
 	GLint b_index;
 	GLint color_table_index;
 	int mandelbrot;
 	GLint mandelbrot_index;
-	float zulia[2];
+	double zulia[2];
 	GLint zulia_index;
 
 	GLuint program;
@@ -63,13 +63,13 @@ struct Global
 		}
 		else
 		{
-			fractal_center_x = -0.6f;
+			fractal_center_x = -0.6;
 			fractal_center_y = 0;
 			mouse_z = 9592;	// ln(0.004)/(ln(10)/4000)
 			mandelbrot = 1;
 			active_color_table = 0;
-			zulia[0] = 0.0f;
-			zulia[1] = 0.0f;
+			zulia[0] = 0.0;
+			zulia[1] = 0.0;
 			file_number = 0;
 		} // end else
 		window_width = 800;
@@ -77,8 +77,8 @@ struct Global
 		delete_settings = false;
 
 		s = exp(wheel_factor*mouse_z);	// 0.004
-		b[0] = fractal_center_x - 0.5f*s*window_width;
-		b[1] = fractal_center_y - 0.5f*s*window_height;
+		b[0] = fractal_center_x - 0.5*s*window_width;
+		b[1] = fractal_center_y - 0.5*s*window_height;
 	} // end Global default constructor
 
 	~Global()
@@ -129,7 +129,7 @@ struct Global
 } g; // end struct Global
 
 const char *const Global::window_title = "drawing fractals using shaders";
-const float Global::wheel_factor = -0.000575646f;	// ln(10)/4000
+const double Global::wheel_factor = -0.000575646;	// ln(10)/4000
 const char *const Global::settings_file_name = "settings.dat";
 
 					// 120 is the smallest change in mouse_z
