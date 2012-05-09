@@ -1,15 +1,15 @@
 General:
 
-    This is a graphical application that displays the Mandelbrot and Zulia sets 
-and lets you navigate through them by panning and zooming with the mouse. 
+    This is a graphical application that displays the Mandelbrot and Zulia 
+sets and lets you navigate through them by panning and zooming with the mouse. 
     The application allows you to select whether you want the Mandelbrot or a 
-Zulia set to be displayed, the specific Zulia set to be displayed and the colors 
-that will be used for rendering it. It also allows you to save the displayed 
-image to a file and it 'remembers' what you were looking at the last time you 
-used it.
+Zulia set to be displayed, the specific Zulia set to be displayed and the 
+colors that will be used for rendering it. It also allows you to save the 
+displayed image to a file and it 'remembers' what you were looking at the last 
+time you used it.
 
-    To render the images the application uses OpenGL and GLSL shaders to achieve 
-better performance that possible when using the CPU.
+    To render the images the application uses OpenGL and GLSL shaders to 
+achieve better performance that possible when using the CPU.
 
 
 Usage:
@@ -19,38 +19,39 @@ Press and hold <left mouse button> and move mouse to pan. Release
     <left mouse button> to stop panning.
 Turn mouse wheel to zoom in/out. Turning it with your finger moving away from 
     you zooms in.
-Press and hold <right mouse button> and move mouse to select another Zulia set. 
-    Release <right mouse button> to stop changing selection.
+Press and hold <right mouse button> and move mouse to select another Zulia 
+    set. Release <right mouse button> to stop changing selection.
     
 All actions result in real time feedback.
 
-Press numbers <1> through <6> to select a color set to be used for rendering the 
-    fractals. (keyboard and keypad numbers should work)
-Press <m> to enter 'Mandelbrot' mode. The Mandelbrot set will be rendered. (note 
-    that there is only one Mandelbrot set)
-Press <z> to enter 'Zulia' mode. The selected Zulia set will be rendered. (note 
-    that there is exactly one Zulia set for each complex number) When in 'Zulia 
-    mode a small red dot will mark the complex zero if visible.	Also a small 
-    cyan-within-red dot will mark the selected complex number for which the 
-    corresponding Zulia set is being rendered.
+Press numbers <1> through <6> to select a color set to be used for rendering 
+    the fractals. (keyboard and keypad numbers should work)
+Press <m> to enter 'Mandelbrot' mode. The Mandelbrot set will be rendered. 
+    (note that there is only one Mandelbrot set)
+Press <z> to enter 'Zulia' mode. The selected Zulia set will be rendered. 
+    (note that there is exactly one Zulia set for each complex number) When in 
+    'Zulia mode a small red dot will mark the complex zero if visible.	Also a 
+    small cyan-within-red dot will mark the selected complex number for which 
+    the corresponding Zulia set is being rendered.
 Press <enter> to save the current image being displayed to a portable pixelmap 
     file. The files will be named "image_0.ppm", "image_1.ppm" and so on until 
     the settings are deleted, in which case the numbering will restart from 0. 
-    If a file with the same name as the one being saved already exists, it will 
-    be deleted without warning! The files are saved in the current directory. 
-    When the program finishes saving the file on disk it will alert you with a 
-    'beep' sound.
+    If a file with the same name as the one being saved already exists, it 
+    will be deleted without warning! The files are saved in the current 
+    directory. When the program finishes saving the file on disk it will alert 
+	you with a 'beep' sound.
 Press <delete> to delete the settings file on exit instead of saving the new 
-    settings. The settings are usually saved automatically on exit and include:
+    settings. The settings are usually saved automatically on exit and 
+    include:
         * the current zoom level
         * which part of the fractal is being displayed
         * whether the Mandelbrot or a Zulia set is being displayed
         * which color table is currently in use
         * the complex number currently used to generate the Zulia set
         * the number that will be used for the next file name
-    You can delete the setting file (settings.dat) manually.	
-Press <escape> to exit. The settings will be saved automatically (or deleted if 
-    the <delete> key was pressed earlier).
+    You can delete the setting file (settings.dat) manually.
+Press <escape> to exit. The settings will be saved automatically (or deleted 
+    if the <delete> key was pressed earlier).
 
 Resize window by dragging its border as usual. (window size is not saved)
 Maximize/Minimize/Close application by clicking the buttons on the top-right 
