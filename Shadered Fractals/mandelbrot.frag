@@ -1,3 +1,7 @@
+//#pragma optimize(off)
+//#pragma debug(on)
+
+
 #define MAXITER 255
 #define THRESHOLD 25.0
 
@@ -30,6 +34,17 @@ void main()
 		if (dot(z,z)>THRESHOLD)
 			break;
 	} // end for
+
+	/*if(gl_FragCoord.x < 400)
+		if(gl_FragCoord.y < 400)
+			gl_FragColor = vec4(color_table[0],1.0);
+		else
+			gl_FragColor = vec4(color_table[50],1.0);
+	else
+		if(gl_FragCoord.y < 400)
+			gl_FragColor = vec4(color_table[100],1.0);
+		else
+			gl_FragColor = vec4(color_table[150],1.0);*/
 	gl_FragColor = vec4(color_table[i],1.0);
 	
 
