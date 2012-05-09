@@ -29,6 +29,19 @@ using std::cerr;
 using std::clog;
 using std::left;
 
+#include <algorithm>
+using std::copy;
+
+#include <iterator>
+using std::istream_iterator;
+using std::ostream_iterator;
+
+#include <fstream>
+using std::ifstream;
+
+#include <ios>
+using std::noskipws;
+
 #include "color tables.h"
 #include "global.h"
 #include "handlers.h"
@@ -66,6 +79,18 @@ int main(int argc, char **argv)
 	glUniform3fv(g.color_table_index,TABLE_ENTRIES,(GLfloat*)color_table[g.active_color_table]);
 	glUniform1i(g.mandelbrot_index,g.mandelbrot);
 	glUniform2fv(g.zulia_index,1,g.zulia);
+
+	// help initialization
+	cout << "\n\n";
+	const char usageFilePath[] = "../usage.txt";
+	ifstream in(usageFilePath);
+	if(in)
+	{
+		in >> noskipws;
+		copy(istream_iterator<char>(in),istream_iterator<char>(),ostream_iterator<char>(cout));
+	}
+	else
+		cerr << "Could not read help from file " << usageFilePath << endl;
 
 	// event handling initialization
 	glutDisplayFunc(display);
