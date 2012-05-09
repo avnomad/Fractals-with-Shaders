@@ -96,7 +96,7 @@ void keyboard(unsigned char key, int x, int y)
 		break;
 	case '\r':	// enter key
 		ostringstream file_name;
-		file_name << "c:/image_" << g.file_number++ << ".ppm";
+		file_name << "image_" << g.file_number++ << ".ppm";
 		ofstream out(file_name.str().c_str(),std::ios_base::out|std::ios_base::binary);
 		if(!out)
 		{
