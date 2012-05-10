@@ -102,6 +102,7 @@
   <ItemGroup>
     <None Include="..\usage.txt" />
     <None Include="mandelbrot.frag" />
+    <None Include="manuscripts.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -48,5 +48,8 @@
     <None Include="..\usage.txt">
       <Filter>Documentation</Filter>
     </None>
+    <None Include="manuscripts.jpg">
+      <Filter>Documentation</Filter>
+    </None>
   </ItemGroup>
 </Project>
