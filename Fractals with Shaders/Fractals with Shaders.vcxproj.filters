@@ -12,8 +12,8 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{b89b5d61-64f8-43cd-9502-b2dae776e85e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shared">
-      <UniqueIdentifier>{d3d3d010-2a50-407a-b0fb-139348ec11c1}</UniqueIdentifier>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{6444989c-1950-4e39-87a2-30de9772ca93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -40,22 +40,16 @@
     <ClInclude Include="shader loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Unsorted\char reader.h">
-      <Filter>Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Unsorted\direct input\DirectInput Wrapper.h">
-      <Filter>Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Unsorted\direct input\Mouse Wrapper.h">
-      <Filter>Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Unsorted\Color\wavelength to RGB.h">
-      <Filter>Shared</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="mandelbrot.frag">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\usage.txt">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="manuscripts.jpg">
+      <Filter>Documentation</Filter>
     </None>
   </ItemGroup>
 </Project>

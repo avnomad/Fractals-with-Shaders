@@ -3,6 +3,7 @@ Debug/*
 Release/*
 ipch/*
 syntax: glob
-Shadered Fractals.opensdf
-Shadered Fractals.sdf
-Shadered Fractals/settings.dat
+Fractals with Shaders.opensdf
+Fractals with Shaders.sdf
+Fractals with Shaders/settings.dat
+Fractals with Shaders.suo
